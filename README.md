@@ -6,18 +6,18 @@
 
 ## idk
 ```powershell
-New-Item -Name VotV -ItemType directory | Set-Location
-New-Item -Name VotV.uproject -ItemType file -Value '{"FileVersion":3,"EngineAssociation":"4.27"}'
-Start-Process VotV.uproject
+ni -Name VotV -ItemType directory | sl
+ni -Name VotV.uproject -ItemType file -Value '{"FileVersion":3,"EngineAssociation":"4.27"}'
+start VotV.uproject
 ```
 
 ```powershell
-New-Item -Name Config -ItemType directory | Set-Location
-$DefaultGame = New-Item -Name DefaultGame.ini -ItemType file
+ni -Name Config -ItemType directory | sl
+$DefaultGame = ni -Name DefaultGame.ini -ItemType file
 
-Add-Content -Path $DefaultGame -Value '[/Script/UnrealEd.ProjectPackagingSettings]'
-Add-Content -Path $DefaultGame -Value 'bGenerateChunks=True'
-Add-Content -Path $DefaultGame -Value 'bShareMaterialShaderCode=False'
+ac -Path $DefaultGame -Value '[/Script/UnrealEd.ProjectPackagingSettings]'
+ac -Path $DefaultGame -Value 'bGenerateChunks=True'
+ac -Path $DefaultGame -Value 'bShareMaterialShaderCode=False'
 ```
 ndasdahsddnmasda
 

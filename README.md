@@ -42,10 +42,10 @@ Head on over to the [EternityDev Games "VoidMod Loader" thread](https://discord.
 Back at your terminal, run the following:
 ```powershell
 # Copy "Content" dir to clipboard, open Explorer
-scb (ni -Name Content -ItemType directory -Path '.\VotV')
+ni -Name Content -ItemType directory -Path '.\VotV' | scb
 explorer
 ```
-Then extract the DevKit as you would any ZIP file, except use the value in your clipboard as the target path.
+Then extract the DevKit as you would any ZIP file, but use the value in your clipboard as the target path.
 
 And fire up the editor...!
 ```powershell

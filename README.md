@@ -19,12 +19,18 @@ ac -Path $DefaultGame -Value '[/Script/UnrealEd.ProjectPackagingSettings]'
 ac -Path $DefaultGame -Value 'bGenerateChunks=True'
 ac -Path $DefaultGame -Value 'bShareMaterialShaderCode=False'
 ```
-ndasdahsddnmasda
 
 ```powershell
-# vvv change this if necessary vvv
-$VictoryPlugin = 'X:\Some\Path' # change this
+$stream = New-Object System.IO.MemoryStream
 
+iwr -Uri "http://www.contoso.com" -OutFile $stream
+$stream.Position = 0
 
-Expand-Archive -LiteralPath 'C:\Archives\Draft[v1].zip' -DestinationPath C:\Reference
+$Compression = [System.IO.Compression]
+
+$zip = $Compression.ZipArchive::new($stream, $Compression.ZipArchiveMode::Read)
+$zip.ExtractToDirectory($destinationPath)
+
+$stream.Dispose()
+$zip.Dispose()
 ```

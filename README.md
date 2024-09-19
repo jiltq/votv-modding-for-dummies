@@ -6,37 +6,45 @@
 
 ## Project Setup
 Now, it's time to create your UE4 "VotV" project, where you'll be developing your mods.
-
 ```powershell
+# Create project
 ni -Name VotV.uproject -ItemType file -Path '.\VotV' -Force -Value '{"FileVersion":3,"EngineAssociation":"4.27"}'
 ```
-Configure the project to be compatible with modding...
 ```powershell
+# Configure project for modding
 $DefaultGame = ni -Name DefaultGame.ini -ItemType file -Path '.\VotV\Config' -Force
 
 ac -Path $DefaultGame -Value '[/Script/UnrealEd.ProjectPackagingSettings]'
 ac -Path $DefaultGame -Value 'bGenerateChunks=True'
 ac -Path $DefaultGame -Value 'bShareMaterialShaderCode=False'
 ```
-Download VictoryPlugin27...
 ```powershell
+# Download VictoryPlugin27
 $vpurl = 'https://github.com/jiltq/votv-modding-for-dummies/releases/download/VictoryPlugin27/VictoryPlugin27.zip'
 $cont = (iwr -Uri $vpurl).Content
 ```
-Write the zipped plugin to memory...
 ```powershell
+# Write zipped plugin to memory
 $stream = New-Object System.IO.MemoryStream
 $stream.Write($cont, 0, $cont.Length)
 $stream.Position = 0
 ```
-Install the plugin to the project...
 ```powershell
+# Install plugin to project
 $zip = [System.IO.Compression.ZipArchive]::new($stream, [System.IO.Compression.ZipArchiveMode]::Read)
 
 $vpdir = ni -Name VictoryBPLibrary -ItemType directory -Path '.\VotV\Plugins' -Force
-
 [System.IO.Compression.ZipFileExtensions]::ExtractToDirectory($zip, $vpdir)
 ```
+### VoidMod
+Head on over to the [EternityDev Games "VoidMod Loader" thread](https://discord.com/channels/512287844258021376/1135662233460949002/1250255466928275537) and download `VoidModDevKit-2.0.0.zip`.
+
+Back at your terminal, run the following:
+```powershell
+scb (ni -Name Content -ItemType directory -Path '.\VotV')
+```
+
+
 And fire up the editor...!
 ```powershell
 start .\VotV\VotV.uproject

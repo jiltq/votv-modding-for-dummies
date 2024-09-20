@@ -1,5 +1,8 @@
 # votv-modding-for-dummies
 
+## Prerequisites
+This guide assumes you have a fairly recent version of Powershell.
+
 ## Epic Games Launcher
 
 ## Unreal Engine Setup
@@ -51,3 +54,6 @@ And fire up the editor...!
 ```powershell
 start .\VotV\VotV.uproject
 ```
+
+## In the Editor
+wip

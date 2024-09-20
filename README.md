@@ -54,6 +54,7 @@ And fire up the editor...!
 ```powershell
 start .\VotV\VotV.uproject
 ```
+After this, Unreal Engine will remember the project and let you open it from the project select menu.
 
 ## In the Editor
 wip
